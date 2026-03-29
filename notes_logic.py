@@ -30,3 +30,19 @@ def add_notes(title, content):
         new_id = notes[-1]['id'] + 1
     notes.append({'id': new_id, 'title': title, 'content': content})
     save_notes(notes)
+
+def list_notes():
+    """Returns all notes."""
+    return load_notes()
+
+def get_note(note_id):
+    """Gets a note from the JSON file."""
+    notes = load_notes()
+    note = None
+    for item in notes:
+        if item['id'] == note_id:
+            note = item
+            break
+    if not note:
+        raise ValueError(f"Note with ID {note_id} not found.")
+    return note
