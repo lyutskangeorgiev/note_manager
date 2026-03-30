@@ -8,7 +8,7 @@ def add(title: str, content: str):
     notes_logic.add_notes(title, content)
     typer.echo(f"{title} added in notes")
 
-#changing the name from list_notes to list because list is a python keyword
+# Changing the name from list_notes to list because list is a python keyword
 @app.command(name="list")
 def list_notes():
     """Shows a list of all saved notes."""
@@ -18,12 +18,11 @@ def list_notes():
         return
 
     last_id = notes[-1]['id']
-    #we cast the biggest/last id to str and check its length
-    #to calc the max width of 'the id column'
+    # Cast the biggest/last id to str and check its length
+    # to calc the max width of 'the id column'
     width = len(str(last_id))
     # ':' starts formatting, '<' left-aligns, '{width}' sets dynamic spacing
     typer.echo(f"{"ID":<{width}} Title")
-    # ':' starts formatting, '<' left-aligns, '{width}' sets dynamic spacing
     for note in notes:
         typer.echo(f"{note['id']:<{width}}: {note['title']}")
 
@@ -34,11 +33,11 @@ def show(note_id: int):
         note = notes_logic.get_note(note_id)
         header = f"ID: {note_id} | Title: {note['title']}"
         typer.echo(header)
-        #we create line separation the size of the header for better formatting
+        # Create line separation the size of the header for better formatting
         typer.echo("-" * len(header))
         typer.echo(note['content'])
     except ValueError as e:
-        #send error to stderr so it doesn't mix with stdout if redirected (to a file for example)
+        # Send error to stderr so it doesn't mix with stdout if redirected (to a file for example)
         typer.echo(f"Error: {e}", err=True)
 
 @app.command()
@@ -48,5 +47,4 @@ def delete(note_id: int):
         notes_logic.delete_note(note_id)
         typer.echo(f"Note with ID: {note_id} deleted successfully")
     except ValueError as e:
-        #send error to stderr so it doesn't mix with stdout if redirected (to a file for example)
         typer.echo(f"Error: {e}", err=True)
