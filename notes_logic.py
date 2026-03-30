@@ -1,7 +1,6 @@
 import json
 import os
 
-# File name where data will live
 NOTES_FILE = "notes.json"
 
 def load_notes():
