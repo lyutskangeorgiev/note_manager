@@ -6,9 +6,9 @@ A simple, user-friendly command-line note-taking application built with Python.
 
 To run this project locally, follow these steps:
 
-1. Ensure you have Python 3 installed.
+1. Ensure you have Python 3.10+ installed.
 2. Clone the repository:
-   `git clone <your-github-repo-link>`
+   `git clone https://github.com/lyutskangeorgiev/note_manager.git`
 3. Install the required dependencies from `requirements.txt`:
    `pip install -r requirements.txt`
 
